@@ -1,0 +1,26 @@
+<div #content style="display: none;">
+  <ng-content></ng-content>
+</div>
+<div style="border: solid 1px blue;">
+<pre>{{contentBlock[label] | json}}</pre>
+<button (click)="revert()">Revert to original {{label}}</button>
+<button (click)="redo()">From content block {{label}}</button>
+<button (click)="edit()">Edit {{label}}</button>
+
+
+<div *ngIf="editEnable">
+
+<textarea [(ngModel)]="edited"
+          rows="10"
+          cols="60"></textarea>
+<br>
+<button (click)="editCancel()">CANCEL</button>
+<button (click)="editOk()">OK</button>
+<br>
+</div>
+
+edited:<br>
+<span [innerHTML]="edited | safeHtml"></span>
+  <pre style="border: solid 1px blue;">{{edited}}</pre>
+<br>
+</div>
