@@ -1,5 +1,14 @@
-<p>
-  route-data works!
-</p>
-
-<pre>{{example | json}}</pre>
+<h3>Resolve</h3>
+<p></p>
+<div class="row">
+  <div class="col-sm-4">
+    <ul class="list">
+      <li *ngFor="let item of routeData.dataList; let index = index">
+        <a routerLinkActive="btn btn-sm disabled" [routerLink]="[index]">{{item.companyName}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

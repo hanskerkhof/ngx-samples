@@ -12,14 +12,10 @@ export class ViewChildComponent implements OnInit {
 
   constructor(elementRef: ElementRef) {
     const attrs = getAttrs(elementRef);
-    // console.log('attrs: ', attrs);
     this.title = this.getTitle(attrs);
-
   }
 
   ngOnInit() {
-    // console.log('@ViewChild content: ', this.content1, this.content1.nativeElement.innerHTML.trim());
-    // console.log('title: ', this.title);
   }
 
   private getTitle(attrs: AttrMap) {

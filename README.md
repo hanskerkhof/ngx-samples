@@ -3,9 +3,8 @@ Decorator
 - https://netbasal.com/inspiration-for-custom-decorators-in-angular-95aeb87f072c
 
 WOW!
-https://github.com/angular/angular/issues/21049
-
-THIS works!
+- https://github.com/angular/angular/issues/21049#issuecomment-402654380
+- https://stackoverflow.com/questions/46018599/how-to-globally-set-the-preservewhitespaces-option-in-angular-to-false/46619232#46619232
 
 ##### For JIT Compiling
 

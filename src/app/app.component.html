@@ -38,7 +38,6 @@
             <ul *ngFor="let c of r.children" class="nav-list">
               <li><a [routerLink]="[r.path, c.path]"
                      routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"
                      class="nav-link"> {{c.data?.name ? c.data.name : c.path}}
               </a></li>
             </ul>
@@ -62,6 +61,3 @@
 
   </li>
 </ul>
-
-<br>
-<br>

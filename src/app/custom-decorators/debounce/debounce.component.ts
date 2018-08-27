@@ -20,7 +20,6 @@ export class DebounceComponent implements OnInit, OnDestroy {
   @HostListener('document:mousemove', ['$event'])
   @Debounce(500)
   onMouseMove(e) {
-    // console.log('mousemove Debounce', e.layerX, e.layerY);
     this.mouseCoords = {x: e.layerX, y: e.layerY};
     this.displayTip = false;
   }

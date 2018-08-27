@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    Company
+  </div>
+  <div class="card-block">
+    <div class="card-title">
+      {{routeData.dataItem.companyName}}
+    </div>
+    <div class="card-text">
+      <table class="table" style="margin-top: 0;">
+        <tbody>
+        <tr>
+          <td class="left" style="width: 20px;">
+            <clr-icon shape="building"></clr-icon>
+          </td>
+          <td class="left">
+            {{routeData.dataItem.streetAddress}}<br>
+            {{routeData.dataItem.zipCode}} {{routeData.dataItem.city}}<br>
+            {{routeData.dataItem.country}}
+          </td>
+        </tr>
+        <tr>
+          <td class="left">
+            <clr-icon shape="phone-handset"></clr-icon>
+          </td>
+          <td class="left">
+            {{routeData.dataItem.phoneNumber}}
+            <a href="tel:{{routeData.dataItem.phoneNumber}}">call</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">
+            <clr-icon shape="network-globe"></clr-icon>
+          </td>
+          <td class="left">
+            {{routeData.dataItem.geoLocation.lat}}, {{routeData.dataItem.geoLocation.lon}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--<div class="card-footer">-->
+    <!--<button class="btn btn-sm btn-link">Footer Action 1</button>-->
+    <!--<button class="btn btn-sm btn-link">Footer Action 2</button>-->
+  <!--</div>-->
+</div>
+

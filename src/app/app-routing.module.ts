@@ -10,6 +10,10 @@ import { NgContentComponent } from './ng-content/ng-content.component';
 import { RouteComponent } from './route/route.component';
 import { RouteParametersComponent } from './route/route-parameters/route-parameters.component';
 import { RouteDataComponent } from './route/route-data/route-data.component';
+import { RouteDataDetailComponent } from './route/route-data/route-data-detail/route-data-detail.component';
+
+import { DataResolverService } from './_resolvers/data-resolver.service';
+import { DataItemResolverService } from './_resolvers/data-item-resolver.service';
 
 export const routes: Routes = [
   {
@@ -67,15 +71,27 @@ export const routes: Routes = [
         path: 'data',
         component: RouteDataComponent,
         data: {
-          name: 'Data',
-          example: {foo: 'bar'}
-        }
+          name: 'Resolve',
+          dataStatic: {foo: 'bar'}
+        },
+        resolve: {
+          dataList: DataResolverService
+        },
+        children: [
+          {
+            path: ':id',
+            component: RouteDataDetailComponent,
+            resolve: {
+              dataItem: DataItemResolverService
+            }
+          }
+        ]
       },
       {
         path: 'parameters',
         component: RouteParametersComponent,
         data: {
-          name: 'Parameters'
+          name: 'QueryParams & fragment'
         }
       }
     ]

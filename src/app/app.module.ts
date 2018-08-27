@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PipesModule } from './_pipes/pipes.module';
 import { ClarityModule } from '@clr/angular';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
 import { AppComponent } from './app.component';
 import { ViewChildComponent } from './view-child/view-child.component';
 import { EditableComponent } from './ng-content/editable/editable.component';
@@ -18,6 +20,14 @@ import { LifecycleHooksComponent } from './custom-decorators/lifecycle-hooks/lif
 import { RouteComponent } from './route/route.component';
 import { RouteParametersComponent } from './route/route-parameters/route-parameters.component';
 import { RouteDataComponent } from './route/route-data/route-data.component';
+import { RouteDataDetailComponent } from './route/route-data/route-data-detail/route-data-detail.component';
+import { environment } from '../environments/environment';
+
+import { DataService } from './_services/data.service';
+import { DataResolverService } from './_resolvers/data-resolver.service';
+import { DataItemResolverService } from './_resolvers/data-item-resolver.service';
+
+import { InMemoryDataService } from './_db/db';
 
 @NgModule({
   declarations: [
@@ -32,7 +42,8 @@ import { RouteDataComponent } from './route/route-data/route-data.component';
     LifecycleHooksComponent,
     RouteComponent,
     RouteParametersComponent,
-    RouteDataComponent
+    RouteDataComponent,
+    RouteDataDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +51,22 @@ import { RouteDataComponent } from './route/route-data/route-data.component';
     FormsModule,
     PipesModule,
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 100, dataEncapsulation: false}
+    )
+    // environment.production ?
+    //   HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 100}) : []
   ],
-  providers: [],
+  providers: [
+    DataService,
+    DataResolverService,
+    DataItemResolverService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

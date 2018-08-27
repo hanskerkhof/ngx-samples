@@ -1,15 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-route-parameters',
   templateUrl: './route-parameters.component.html',
   styleUrls: ['./route-parameters.component.scss']
 })
-export class RouteParametersComponent implements OnInit {
+export class RouteParametersComponent implements OnInit, OnDestroy {
+  public params: object;
+  public fragment: string;
+  public routeData: any;
+  public displayTip: boolean;
+  public timeoutRef: any;
 
-  constructor() { }
+  @ViewChild('structure') public structure: ElementRef;
+
+  constructor(private route: ActivatedRoute,
+              private scroll: ViewportScroller) {
+  }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(p => {
+      this.params = p;
+    });
+
+    this.route.data.subscribe(data => {
+      this.routeData = data;
+    });
+
+    this.route.fragment.subscribe(fragment => {
+      this.fragment = fragment;
+    });
+
+    this.timeoutRef = setTimeout(() => {
+      if (!this.params.hasOwnProperty('tab')) {
+        this.displayTip = true;
+      }
+    }, 3000);
+  }
+
+  ngOnDestroy() {
+    clearTimeout(this.timeoutRef);
   }
 
 }

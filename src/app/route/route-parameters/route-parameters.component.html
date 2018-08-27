@@ -1,3 +1,62 @@
-<p>
-  route-parameters works!
-</p>
+<h3>{{routeData.name}}</h3>
+<p></p>
+
+<ul class="nav">
+  <li class="nav-item">
+    <button (click)="displayTip = false;"
+            [routerLink]=""
+            [queryParams]=""
+            [fragment]=null
+            [ngClass]="{'active': !params.tab}"
+            class="btn btn-link nav-link"
+            type="button">None
+    </button>
+  </li>
+  <li class="nav-item">
+    <button (click)="displayTip = false;"
+            [routerLink]=""
+            [queryParams]="{tab: 'one'}"
+            [fragment]="'one'"
+            [ngClass]="{'active': params.tab == 'one'}"
+            class="btn btn-link nav-link"
+            type="button">One
+    </button>
+  </li>
+  <li class="nav-item">
+    <button (click)="displayTip = false;"
+            [routerLink]=""
+            [queryParams]="{tab: 'two'}"
+            [fragment]="'two'"
+            [ngClass]="{'active': params.tab == 'two'}"
+            class="btn btn-link nav-link"
+            type="button">Two
+    </button>
+  </li>
+  <li class="nav-item">
+    <button (click)="displayTip = false;"
+            [routerLink]=""
+            [queryParams]="{tab: 'three'}"
+            [fragment]="'three'"
+            [ngClass]="{'active': params.tab == 'three'}"
+            class="btn btn-link nav-link"
+            type="button">Three
+    </button>
+  </li>
+</ul>
+<div *ngIf="displayTip" class="alert alert-info">
+  <div class="alert-items">
+    <div class="alert-item static">
+      <div class="alert-icon-wrapper">
+        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+      </div>
+      <span class="alert-text">
+        Select one of the tabs...
+      </span>
+    </div>
+  </div>
+</div>
+
+<h3>params</h3>
+<pre>{{params | json}}</pre>
+<h3>fragment</h3>
+<pre>{{fragment | json}}</pre>

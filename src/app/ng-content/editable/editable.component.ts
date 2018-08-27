@@ -35,7 +35,6 @@ export class EditableComponent implements OnInit, AfterContentInit {
     // }
 
     this.initialHTMLContent = this.content.nativeElement.innerHTML.replace( /\s{2,}/g, ' ' ).trim();
-    // console.log('initialHTMLContent', this.initialHTMLContent);
     this.setContent();
 
   }
@@ -61,29 +60,20 @@ export class EditableComponent implements OnInit, AfterContentInit {
     } else {
       this.edited = this.content.nativeElement.innerHTML;
       // this.edited = 'EMPTY';
-      // console.log('contentBlock FOR LABEL NOT FOUND');
       // TODO create contentBlock
       // content = `contentBlock FOR LABEL ${this.label} NOT FOUND - ${this.elementRef.nativeElement.innerHTML}`;
     }
   }
 
   ngOnInit() {
-    // console.log('content:', this.content.nativeElement.innerHTML);
-    // console.log('label:', this.label);
   }
 
   edit() {
-    // this.edited = 'edited';
-    // console.log('edit content: ', this.content.nativeElement.innerHTML);
-    // console.log('edited: ', this.edited);
     this.editEnable = true;
   }
 
   editOk() {
-    // this.edited = 'edited';
     this.content.nativeElement.innerHTML = this.edited;
-    // console.log('edit content: ', this.content.nativeElement.innerHTML);
-    // console.log('edited: ', this.edited);
     this.editEnable = false;
   }
 
