@@ -118,7 +118,7 @@ workflows:
 
   build-and-deploy:
     jobs:
-      - build
+#      - build
 #      - deploy-staging:
 #          requires:
 #            - build
