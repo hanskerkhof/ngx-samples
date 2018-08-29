@@ -97,13 +97,6 @@ export const routes: Routes = [
         ]
       },
       {
-        path: 'parameters',
-        component: RouteParametersComponent,
-        data: {
-          name: 'QueryParams & fragment'
-        }
-      },
-      {
         path: 'outlets',
         component: RouteOutletsComponent,
         data: {
@@ -130,6 +123,13 @@ export const routes: Routes = [
             }
           }
         ]
+      },
+      {
+        path: 'parameters',
+        component: RouteParametersComponent,
+        data: {
+          name: 'Query & fragment'
+        }
       }
     ]
   }

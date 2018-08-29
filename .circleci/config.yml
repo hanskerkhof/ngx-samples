@@ -57,11 +57,11 @@ jobs:
           name: Deploy to staging (master or feature branch)
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "Deploy master branch";
+              echo "Deploy master branch to firebase app";
               mv /tmp/staging/dist dist
               node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             else
-              echo "Deploy branch ${CIRCLE_BRANCH}";
+              echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
               mv /tmp/staging/dist dist
               node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             fi
