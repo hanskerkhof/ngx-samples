@@ -122,15 +122,15 @@ workflows:
       - deploy-staging:
           requires:
             - build
-      - build-production:
-          filters:
-            branches:
-              only:
-                - master
-      - hold-for-approval:
-          type: approval
-          requires:
-            - build-production
-      - deploy-production:
-          requires:
-            - hold-for-approval
+#      - build-production:
+#          filters:
+#            branches:
+#              only:
+#                - master
+#      - hold-for-approval:
+#          type: approval
+#          requires:
+#            - build-production
+#      - deploy-production:
+#          requires:
+#            - hold-for-approval
