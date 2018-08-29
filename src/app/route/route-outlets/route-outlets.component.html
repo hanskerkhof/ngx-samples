@@ -1,0 +1,32 @@
+<router-outlet name="header"
+               (activate)='onOutletActivate($event)'
+               (deactivate)='onOutletDeactivate($event)'></router-outlet>
+<router-outlet name="popup"
+               (activate)='onOutletActivate($event)'
+               (deactivate)='onOutletDeactivate($event)'></router-outlet>
+<h3>Router outlets</h3>
+<p></p>
+
+<div class="row">
+  <div class="col-sm-12" style="clear:both;">
+    <ul class="list data-list">
+      <li *ngFor="let item of routeData.dataList; let index = index"
+          [ngClass]="{'active': (id === index)}">
+        <a (click)="id = index" [routerLink]="[{ outlets: { popup: null, header: [index] } }]">
+          {{item.companyName}}</a>
+        <div class="right" style="text-wrap: none">
+        <a (click)="id = index" [routerLink]="[{ outlets: { popup: [index, 'address'], header: [index] } }]">
+          <clr-icon shape="building"></clr-icon></a>
+        <a (click)="id = index" [routerLink]="[{ outlets: { popup: [index, 'phone'], header: [index] } }]">
+          <clr-icon shape="phone-handset"></clr-icon></a>
+        <a (click)="id = index" [routerLink]="[{ outlets: { popup: [index, 'map'], header: [index] } }]">
+          <clr-icon shape="map"></clr-icon></a>
+          <!--<a routerLinkActive="btn btn-sm disabled" [routerLink]="[index]">{{item.companyName}}</a>-->
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <router-outlet></router-outlet>
+  </div>
+</div>

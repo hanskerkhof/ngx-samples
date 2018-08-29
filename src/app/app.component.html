@@ -1,12 +1,17 @@
 <div class="main-container">
   <!--<div class="alert alert-app-level">-->
-    <!--...-->
+  <!--...-->
   <!--</div>-->
-  <header class="header header-6">
-    ...
+  <header class="header header-7">
+    <div class="branding">
+      <a [routerLink]="['/']" class="nav-link">
+        <clr-icon shape="flame" class="is-solid"></clr-icon>
+        <span class="title">ngx-samples</span>
+      </a>
+    </div>
   </header>
   <!--<nav class="subnav">-->
-    <!--...-->
+  <!--...-->
   <!--</nav>-->
   <div class="content-container">
     <div class="content-area">
@@ -21,7 +26,7 @@
            class="nav-link active">Home
         </a>
 
-        <ng-container *ngFor="let r of myroutes">
+        <ng-container *ngFor="let r of myRoutes">
 
           <a *ngIf="!r.hasOwnProperty('children')"
              [routerLink]="['/', r.path]"
@@ -34,12 +39,18 @@
 
           <section *ngIf="r.hasOwnProperty('children')" class="nav-group collapsible">
             <input [id]="r.path" type="checkbox">
-            <label [for]="r.path">{{r.path}}</label>
+            <label [for]="r.path">
+              {{r.path}}
+              <span (@pulseInOut.done)="onAnimationDone($event)"
+                    (@pulseInOut.start)="onAnimationStart($event)"
+                    [@pulseInOut] *ngIf="(r.path === 'route' && this.badges.data.list.amount)" class="badge">{{this.badges.data.list.amount}}</span>
+            </label>
             <ul *ngFor="let c of r.children" class="nav-list">
-              <li><a [routerLink]="[r.path, c.path]"
-                     routerLinkActive="active"
-                     class="nav-link"> {{c.data?.name ? c.data.name : c.path}}
-              </a></li>
+              <li style="white-space: nowrap; display: inline;">
+                <a [routerLink]="[r.path, c.path]"
+                   routerLinkActive="active"
+                   class="nav-link"> {{c.data?.name ? c.data.name : c.path}}
+                </a></li>
             </ul>
           </section>
         </ng-container>
@@ -47,17 +58,3 @@
     </nav>
   </div>
 </div>
-<!--routes: <pre>{{myroutes | json}}</pre>-->
-<ul *ngFor="let r of myroutes">
-  <li><a [routerLink]="[r.path]"
-         routerLinkActive="active">{{r.path}}</a>
-
-    <span *ngIf="r.hasOwnProperty('children')">
-    <ul *ngFor="let c of r.children">
-      <li><a [routerLink]="[r.path]"
-             routerLinkActive="active">{{c.path}}</a></li>
-    </ul>
-  </span>
-
-  </li>
-</ul>

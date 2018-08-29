@@ -1,14 +1,15 @@
 <h3>Resolve</h3>
 <p></p>
+
 <div class="row">
-  <div class="col-sm-4">
-    <ul class="list">
+  <div class="col-sm-5 col-md-4 col-lg-3">
+    <ul [@listStagger]="routeData.dataList.length" class="list data-list">
       <li *ngFor="let item of routeData.dataList; let index = index">
         <a routerLinkActive="btn btn-sm disabled" [routerLink]="[index]">{{item.companyName}}</a>
       </li>
     </ul>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-7 col-md-8 col-lg-9">
     <router-outlet></router-outlet>
   </div>
 </div>

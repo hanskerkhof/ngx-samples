@@ -6,6 +6,7 @@ import { ClarityModule } from '@clr/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { ViewChildComponent } from './view-child/view-child.component';
@@ -21,6 +22,8 @@ import { RouteComponent } from './route/route.component';
 import { RouteParametersComponent } from './route/route-parameters/route-parameters.component';
 import { RouteDataComponent } from './route/route-data/route-data.component';
 import { RouteDataDetailComponent } from './route/route-data/route-data-detail/route-data-detail.component';
+import { RouteOutletsComponent } from './route/route-outlets/route-outlets.component';
+
 import { environment } from '../environments/environment';
 
 import { DataService } from './_services/data.service';
@@ -28,6 +31,8 @@ import { DataResolverService } from './_resolvers/data-resolver.service';
 import { DataItemResolverService } from './_resolvers/data-item-resolver.service';
 
 import { InMemoryDataService } from './_db/db';
+import { RouteOutletsDetailComponent } from './route/route-outlets/route-outlets-detail/route-outlets-detail.component';
+import { RouteOutletsHeaderComponent } from './route/route-outlets/route-outlets-header/route-outlets-header.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,10 @@ import { InMemoryDataService } from './_db/db';
     RouteComponent,
     RouteParametersComponent,
     RouteDataComponent,
-    RouteDataDetailComponent
+    RouteDataDetailComponent,
+    RouteOutletsComponent,
+    RouteOutletsDetailComponent,
+    RouteOutletsHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +60,10 @@ import { InMemoryDataService } from './_db/db';
     PipesModule,
     ClarityModule,
     BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCGRsN99RrntLjt2OJJxc87SLk1Iv1GTJY',
+      libraries: ['places']
+    }),
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

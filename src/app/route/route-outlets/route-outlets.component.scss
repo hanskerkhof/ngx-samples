@@ -1,0 +1,27 @@
+ul.data-list {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+ul.data-list li {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 2px 7px;
+  background-color: #f3f3f3;
+  border-bottom: #DDDDDD solid 1px;
+  &:hover {
+    background-color: #DDDDDD;
+  }
+  &.active {
+    background-color: #333333;
+    color: white;
+    a {
+      color: white;
+    }
+  }
+  .right {
+    float:right;
+  }
+}

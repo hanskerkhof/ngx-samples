@@ -1,0 +1,11 @@
+ul.data-list {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+ul.data-list li {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

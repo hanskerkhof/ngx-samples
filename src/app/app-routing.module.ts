@@ -14,6 +14,9 @@ import { RouteDataDetailComponent } from './route/route-data/route-data-detail/r
 
 import { DataResolverService } from './_resolvers/data-resolver.service';
 import { DataItemResolverService } from './_resolvers/data-item-resolver.service';
+import { RouteOutletsComponent } from './route/route-outlets/route-outlets.component';
+import { RouteOutletsDetailComponent } from './route/route-outlets/route-outlets-detail/route-outlets-detail.component';
+import { RouteOutletsHeaderComponent } from './route/route-outlets/route-outlets-header/route-outlets-header.component';
 
 export const routes: Routes = [
   {
@@ -71,7 +74,7 @@ export const routes: Routes = [
         path: 'data',
         component: RouteDataComponent,
         data: {
-          name: 'Resolve',
+          name: 'Resolve data',
           dataStatic: {foo: 'bar'}
         },
         resolve: {
@@ -82,6 +85,7 @@ export const routes: Routes = [
             path: ':id',
             component: RouteDataDetailComponent,
             resolve: {
+              dataList: DataResolverService,
               dataItem: DataItemResolverService
             }
           }
@@ -93,6 +97,34 @@ export const routes: Routes = [
         data: {
           name: 'QueryParams & fragment'
         }
+      },
+      {
+        path: 'outlets',
+        component: RouteOutletsComponent,
+        data: {
+          name: 'Router outlets'
+        },
+        resolve: {
+          dataList: DataResolverService
+        },
+        children: [
+          {
+            path: ':id/:tab',
+            component: RouteOutletsDetailComponent,
+            outlet: 'popup',
+            resolve: {
+              dataItem: DataItemResolverService
+            }
+          },
+          {
+            path: ':id',
+            component: RouteOutletsHeaderComponent,
+            outlet: 'header',
+            resolve: {
+              dataItem: DataItemResolverService
+            }
+          }
+        ]
       }
     ]
   }

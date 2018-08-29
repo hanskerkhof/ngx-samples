@@ -1,0 +1,20 @@
+.address-company-header, .sub-header {
+  background-color: #333333;
+  color: white;
+  padding: 0 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.sub-header {
+  padding: 3px 13px 5px 14px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+clr-icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 6px;
+}

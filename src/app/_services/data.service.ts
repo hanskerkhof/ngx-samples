@@ -19,7 +19,7 @@ export class DataService {
     const url = 'api/addresses';
     return Observable.create(observer => {
       this.http.get<any>(`${url}`).subscribe((data) => {
-        this.dispatcher.emit(`dataListLoaded`);
+        this.dispatcher.emit({type: 'data:list', payload: {amount: data.length}});
         observer.next(data);
         observer.complete();
       });
@@ -31,7 +31,7 @@ export class DataService {
     const url = 'api/addresses';
     return Observable.create(observer => {
       this.http.get<any>(`${url}/${id}`).subscribe((data) => {
-        this.dispatcher.emit(`dataItemLoaded`);
+        this.dispatcher.emit({type: 'data:item', payload: {}});
         observer.next(data);
         observer.complete();
       });

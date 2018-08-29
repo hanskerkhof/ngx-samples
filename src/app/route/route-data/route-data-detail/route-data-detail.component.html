@@ -1,4 +1,12 @@
-<div class="card">
+<div class="toggle-switch">
+  <input type="checkbox" [(ngModel)]="slideShow" (click)="toggleSlideShow()" id="toggleSlideShow">
+  <label for="toggleSlideShow">Slideshow</label>
+</div>
+
+<div *ngIf="toggle"
+     [@flyInOut]="toggle"
+     (@flyInOut.done)="onAnimationDone($event)"
+     class="card">
   <div class="card-header">
     Company
   </div>
@@ -25,12 +33,11 @@
           </td>
           <td class="left">
             {{routeData.dataItem.phoneNumber}}
-            <a href="tel:{{routeData.dataItem.phoneNumber}}">call</a>
           </td>
         </tr>
         <tr>
           <td class="left">
-            <clr-icon shape="network-globe"></clr-icon>
+            <clr-icon shape="map"></clr-icon>
           </td>
           <td class="left">
             {{routeData.dataItem.geoLocation.lat}}, {{routeData.dataItem.geoLocation.lon}}
@@ -40,9 +47,9 @@
       </table>
     </div>
   </div>
-  <!--<div class="card-footer">-->
-    <!--<button class="btn btn-sm btn-link">Footer Action 1</button>-->
-    <!--<button class="btn btn-sm btn-link">Footer Action 2</button>-->
-  <!--</div>-->
+  <div class="card-footer" *ngIf="!slideShow">
+  <button (click)="prev()" class="btn btn-sm btn-link">< Previous</button>
+  <button style="float: right" (click)="next()" class="btn btn-sm btn-link">Next ></button>
+  </div>
 </div>
 
