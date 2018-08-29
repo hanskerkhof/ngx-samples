@@ -39,28 +39,28 @@ jobs:
           paths:
             - dist/*
 
-#  deploy-staging:
-#    <<: *defaults
-#    steps:
-#      - checkout
+  deploy-staging:
+    <<: *defaults
+    steps:
+      - checkout
 #      - run: mkdir ~/.aws
 #      - run: echo -e "[stg]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
 #      - run: echo -e "[prd]\naws_access_key_id = $AWS_ACCESS_KEY_ID_PROD\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY_PROD\n" >> ~/.aws/credentials
-#      - attach_workspace:
-#          at: /tmp/staging
-#      - run: ls -l /tmp/staging/dist
-#      - run:
-#          name: Deploy to staging (master or feature branch)
-#          command: |
-#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#              echo "Deploy branch master to staging";
-#              ./node_modules/.bin/firebase deploy --public /tmp/staging/dist --token=$FIREBASE_TOKEN --non-interactive
-#              sh ./deploy-s3.sh stg /tmp/staging/dist sad-stg-management-frontend
-#            else
-#              echo "Deploy branch ${CIRCLE_BRANCH} to staging";
-#              ./node_modules/.bin/firebase deploy --public /tmp/staging/dist --token=$FIREBASE_TOKEN --non-interactive
-#              sh ./deploy-s3.sh stg /tmp/staging/dist sad-stg-management-frontend/${CIRCLE_BRANCH}
-#            fi
+      - attach_workspace:
+          at: /tmp/staging
+      - run: ls -l /tmp/staging/dist
+      - run:
+          name: Deploy to staging (master or feature branch)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "Deploy branch master to staging";
+              ./node_modules/.bin/firebase deploy --public /tmp/staging/dist --token=$FIREBASE_TOKEN --non-interactive
+              sh ./deploy-s3.sh stg /tmp/staging/dist sad-stg-management-frontend
+            else
+              echo "Deploy branch ${CIRCLE_BRANCH} to staging";
+              ./node_modules/.bin/firebase deploy --public /tmp/staging/dist --token=$FIREBASE_TOKEN --non-interactive
+              sh ./deploy-s3.sh stg /tmp/staging/dist sad-stg-management-frontend/${CIRCLE_BRANCH}
+            fi
 
   build-production:
     <<: *defaults
@@ -121,9 +121,9 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-#      - deploy-staging:
-#          requires:
-#            - build
+      - deploy-staging:
+          requires:
+            - build
       - build-production:
           filters:
             branches:
