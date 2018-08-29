@@ -29,10 +29,8 @@ jobs:
           name: build angular app for staging (master or feature branch)
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#              node version.js && node_modules/\@angular/cli/bin/ng build --configuration=stag --prod --output-path /tmp/staging/dist --no-progress
               node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress
             else
-#             node version.js && node_modules/\@angular/cli/bin/ng build --configuration=stag --prod --output-path /tmp/staging/dist --no-progress --base-href=/${CIRCLE_BRANCH}/
               node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress --base-href=/${CIRCLE_BRANCH}/
             fi
       - run: ls -l /tmp/staging/dist
