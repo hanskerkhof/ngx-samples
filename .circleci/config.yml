@@ -55,11 +55,9 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo "Deploy branch master to staging";
               node_modules/.bin/firebase deploy --public /tmp/staging/dist --token=$FIREBASE_TOKEN --non-interactive
-#              sh ./deploy-s3.sh stg /tmp/staging/dist sad-stg-management-frontend
             else
               echo "Deploy branch ${CIRCLE_BRANCH} to staging";
               node_modules/.bin/firebase deploy --public /tmp/staging/dist --token=$FIREBASE_TOKEN --non-interactive
-#              sh ./deploy-s3.sh stg /tmp/staging/dist sad-stg-management-frontend/${CIRCLE_BRANCH}
             fi
 
   build-production:
