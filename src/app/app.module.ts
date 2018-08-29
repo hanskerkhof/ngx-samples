@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AgmCoreModule } from '@agm/core';
+import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { ViewChildComponent } from './view-child/view-child.component';
@@ -33,6 +34,7 @@ import { DataItemResolverService } from './_resolvers/data-item-resolver.service
 import { InMemoryDataService } from './_db/db';
 import { RouteOutletsDetailComponent } from './route/route-outlets/route-outlets-detail/route-outlets-detail.component';
 import { RouteOutletsHeaderComponent } from './route/route-outlets/route-outlets-header/route-outlets-header.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -51,12 +53,14 @@ import { RouteOutletsHeaderComponent } from './route/route-outlets/route-outlets
     RouteDataDetailComponent,
     RouteOutletsComponent,
     RouteOutletsDetailComponent,
-    RouteOutletsHeaderComponent
+    RouteOutletsHeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    MomentModule,
     PipesModule,
     ClarityModule,
     BrowserAnimationsModule,
