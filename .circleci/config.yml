@@ -80,9 +80,9 @@ jobs:
       - run:
           name: lint
           command: yarn lint
-      - run:
-          name: test
-          command: yarn test
+#      - run:
+#          name: test
+#          command: yarn test --no-progress
       - run:
           name: build angular app for production (master)
           command: |
