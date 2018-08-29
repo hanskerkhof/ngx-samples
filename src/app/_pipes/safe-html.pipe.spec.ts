@@ -32,8 +32,8 @@ describe('SafeHtmlPipe', () => {
       });
   });
 
-  it( 'create an instance', inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
-    let pipe = new SafeHtmlPipe(domSanitizer);
+  it('create an instance', inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
+    const pipe = new SafeHtmlPipe(domSanitizer);
     expect(pipe).toBeTruthy();
   }));
   // it('create an instance', inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
