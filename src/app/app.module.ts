@@ -35,6 +35,14 @@ import { InMemoryDataService } from './_db/db';
 import { RouteOutletsDetailComponent } from './route/route-outlets/route-outlets-detail/route-outlets-detail.component';
 import { RouteOutletsHeaderComponent } from './route/route-outlets/route-outlets-header/route-outlets-header.component';
 import { HomeComponent } from './home/home.component';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { CreateComponent } from './ngxs/create/create.component';
+import { IndexComponent } from './ngxs/index/index.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserState } from './_state/user.state';
+import { NgxsComponent } from './ngxs/ngxs.component';
 
 @NgModule({
   declarations: [
@@ -54,9 +62,16 @@ import { HomeComponent } from './home/home.component';
     RouteOutletsComponent,
     RouteOutletsDetailComponent,
     RouteOutletsHeaderComponent,
-    HomeComponent
+    HomeComponent,
+    CreateComponent,
+    IndexComponent,
+    NgxsComponent
   ],
   imports: [
+    NgxsModule.forRoot([UserState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

@@ -18,6 +18,7 @@ import { RouteOutletsComponent } from './route/route-outlets/route-outlets.compo
 import { RouteOutletsDetailComponent } from './route/route-outlets/route-outlets-detail/route-outlets-detail.component';
 import { RouteOutletsHeaderComponent } from './route/route-outlets/route-outlets-header/route-outlets-header.component';
 import { HomeComponent } from './home/home.component';
+import { NgxsComponent } from './ngxs/ngxs.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,13 @@ export const routes: Routes = [
     component: NgContentComponent,
     data: {
       name: 'ng-content'
+    }
+  },
+  {
+    path: 'ngxs',
+    component: NgxsComponent,
+    data: {
+      name: 'ngxs'
     }
   },
   {
