@@ -1,3 +1,4 @@
+/*
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BehaviourSubjectComponent } from './behaviour-subject.component';
@@ -23,3 +24,4 @@ describe('BehaviourSubjectComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

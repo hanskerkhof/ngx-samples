@@ -11,7 +11,8 @@ export class ThrottleComponent implements OnInit, OnDestroy {
   public timeoutRef: any;
   public displayTip: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   @HostListener('document:mousemove', ['$event'])
   @Throttle(300)
@@ -22,7 +23,7 @@ export class ThrottleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.timeoutRef = setTimeout(() => {
-      if(!this.mouseCoords){
+      if (!this.mouseCoords) {
         this.displayTip = true;
       }
     }, 3000);

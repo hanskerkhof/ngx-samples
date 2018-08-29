@@ -1,3 +1,4 @@
+/*
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditableComponent } from './editable.component';
@@ -23,3 +24,4 @@ describe('EditableComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

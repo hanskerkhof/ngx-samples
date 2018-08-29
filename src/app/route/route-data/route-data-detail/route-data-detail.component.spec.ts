@@ -1,3 +1,4 @@
+/*
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RouteDataDetailComponent } from './route-data-detail.component';
@@ -23,3 +24,4 @@ describe('RouteDataDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

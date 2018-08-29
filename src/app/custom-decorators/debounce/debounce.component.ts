@@ -26,7 +26,7 @@ export class DebounceComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.timeoutRef = setTimeout(() => {
-      if(!this.mouseCoords){
+      if (!this.mouseCoords) {
         this.displayTip = true;
       }
     }, 3000);

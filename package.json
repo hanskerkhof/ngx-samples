@@ -1,13 +1,13 @@
 {
   "name": "ng-content-samples",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "start": "node version.js && ng serve",
+    "build": "node version.js && ng build",
+    "test": "node version.js && ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "node version.js && ng e2e"
   },
   "private": true,
   "dependencies": {

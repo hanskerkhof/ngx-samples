@@ -52,12 +52,12 @@ export class RouteOutletsDetailComponent implements OnInit {
     });
   }
 
-  onAnimationStart(event){
+  onAnimationStart(event) {
   }
 
-  onAnimationDone(event){
+  onAnimationDone(event) {
     // console.log(event);
-    if(event.phaseName === 'done' && event.toState === 'void'){
+    if (event.phaseName === 'done' && event.toState === 'void') {
       this.router.navigate(
         [{outlets: {popup: null}}],
         {relativeTo: this.route.parent}

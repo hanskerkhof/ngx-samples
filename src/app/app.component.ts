@@ -55,16 +55,16 @@ import { bounce, zoomIn, zoomOut, pulse, fadeOutRight, flipOutX, zoomOutRight } 
     trigger('zoomInOut', [
       transition('void => *', useAnimation(zoomIn, {
         // Set the duration to 5seconds and delay to 2seconds
-        params: { timing: 0.2, delay: 0 }
+        params: {timing: 0.2, delay: 0}
       })),
       transition('* => void', useAnimation(zoomOut))
     ]),
     trigger('pulseInOut', [
       transition('void => *', useAnimation(pulse, {
-        params: { timing: 0.3, delay: 0 }
+        params: {timing: 0.3, delay: 0}
       })),
       transition('* => void', useAnimation(flipOutX, {
-        params: { timing: 0.3, delay: 0 }
+        params: {timing: 0.3, delay: 0}
       })),
     ])
 
@@ -83,11 +83,11 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService) {
   }
 
-  onAnimationStart(event){
+  onAnimationStart(event) {
     // console.log(event);
   }
 
-  onAnimationDone(event){
+  onAnimationDone(event) {
     // console.log(event);
   }
 

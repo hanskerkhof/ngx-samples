@@ -22,7 +22,9 @@ export function HookLog(configuration?) {
         const original = target.prototype[hookToBeLogged];
         target.prototype[hookToBeLogged] = function (...args) {
           console.log(`%c ${componentName} - ${hookToBeLogged}`, `color: orange; font-weight: bold`, ...args);
-          original && original.apply(this, args);
+          if (original) {
+            original.apply(this, args);
+          }
         };
       });
     }

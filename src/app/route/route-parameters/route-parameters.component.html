@@ -7,7 +7,7 @@
             [routerLink]=""
             [queryParams]=""
             [fragment]=null
-            [ngClass]="{'active': !params.tab}"
+            [ngClass]="{'active': !tab}"
             class="btn btn-link nav-link"
             type="button">None
     </button>
@@ -17,7 +17,7 @@
             [routerLink]=""
             [queryParams]="{tab: 'one'}"
             [fragment]="'one'"
-            [ngClass]="{'active': params.tab == 'one'}"
+            [ngClass]="{'active': tab == 'one'}"
             class="btn btn-link nav-link"
             type="button">One
     </button>
@@ -27,7 +27,7 @@
             [routerLink]=""
             [queryParams]="{tab: 'two'}"
             [fragment]="'two'"
-            [ngClass]="{'active': params.tab == 'two'}"
+            [ngClass]="{'active': tab == 'two'}"
             class="btn btn-link nav-link"
             type="button">Two
     </button>
@@ -37,7 +37,7 @@
             [routerLink]=""
             [queryParams]="{tab: 'three'}"
             [fragment]="'three'"
-            [ngClass]="{'active': params.tab == 'three'}"
+            [ngClass]="{'active': tab == 'three'}"
             class="btn btn-link nav-link"
             type="button">Three
     </button>

@@ -21,7 +21,9 @@ export function NgLog(): ClassDecorator {
         const original = constructor.prototype[hook];
         constructor.prototype[hook] = function (...args) {
           console.log(`%c ${component} - ${hook}`, `color: #4CAF50; font-weight: bold`, ...args);
-          original && original.apply(this, args);
+          if (original) {
+            original.apply(this, args);
+          }
         };
       });
     }

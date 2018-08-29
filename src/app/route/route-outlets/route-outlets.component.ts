@@ -8,7 +8,7 @@ import { DataService } from '../../_services/data.service';
   styleUrls: ['./route-outlets.component.scss']
 })
 export class RouteOutletsComponent implements OnInit, OnDestroy {
-  public routeData: any
+  public routeData: any;
   public id: any;
 
   constructor(private route: ActivatedRoute,
@@ -25,13 +25,13 @@ export class RouteOutletsComponent implements OnInit, OnDestroy {
     this.dataService.getEmitter().emit({type: 'data:list', payload: {amount: null}});
   }
 
-  onOutletActivate(e){
-    if(e.route.outlet === 'header'){
-      this.id = parseInt(e.route.snapshot.params.id);
+  onOutletActivate(e) {
+    if (e.route.outlet === 'header') {
+      this.id = parseInt(e.route.snapshot.params.id, 0);
     }
   }
 
-  onOutletDeactivate(e){
+  onOutletDeactivate(e) {
   }
 
 }

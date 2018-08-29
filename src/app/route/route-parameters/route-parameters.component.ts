@@ -9,6 +9,7 @@ import { ViewportScroller } from '@angular/common';
 })
 export class RouteParametersComponent implements OnInit, OnDestroy {
   public params: object;
+  public tab: string;
   public fragment: string;
   public routeData: any;
   public displayTip: boolean;
@@ -16,13 +17,13 @@ export class RouteParametersComponent implements OnInit, OnDestroy {
 
   @ViewChild('structure') public structure: ElementRef;
 
-  constructor(private route: ActivatedRoute,
-              private scroll: ViewportScroller) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(p => {
       this.params = p;
+      this.tab = p.tab;
     });
 
     this.route.data.subscribe(data => {

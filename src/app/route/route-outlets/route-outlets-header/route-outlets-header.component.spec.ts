@@ -1,3 +1,4 @@
+/*
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RouteOutletsHeaderComponent } from './route-outlets-header.component';
@@ -23,3 +24,4 @@ describe('RouteOutletsHeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

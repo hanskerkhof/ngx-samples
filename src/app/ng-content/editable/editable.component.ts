@@ -34,12 +34,12 @@ export class EditableComponent implements OnInit, AfterContentInit {
     //   this.title = textContent;
     // }
 
-    this.initialHTMLContent = this.content.nativeElement.innerHTML.replace( /\s{2,}/g, ' ' ).trim();
+    this.initialHTMLContent = this.content.nativeElement.innerHTML.replace(/\s{2,}/g, ' ').trim();
     this.setContent();
 
   }
 
-  setContent(){
+  setContent() {
     if (!this.contentBlock.hasOwnProperty(this.label)) {
       // CREATE contentBlock
     }
@@ -49,7 +49,7 @@ export class EditableComponent implements OnInit, AfterContentInit {
       const d = new Date();
       const milliSeconds = d.getMilliseconds() + '';
       const revision = `contentBlock@${Math.floor(d.getTime() / 1000)}${milliSeconds.padStart(3, '0')}`;
-      if(!this.contentBlock[this.label].revision){
+      if (!this.contentBlock[this.label].revision) {
         this.contentBlock[this.label].revision = revision;
       }
     }
@@ -82,11 +82,11 @@ export class EditableComponent implements OnInit, AfterContentInit {
     this.editEnable = false;
   }
 
-  revert(){
+  revert() {
     this.edited = this.initialHTMLContent;
   }
 
-  redo(){
+  redo() {
     this.setContent();
   }
 }
