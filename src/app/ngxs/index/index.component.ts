@@ -20,10 +20,9 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
   }
 
-  delete(name){
+  delete(name) {
     console.log(name);
-    this.store.dispatch(new RemoveUser({ name}));
-
+    this.store.dispatch(new RemoveUser({name}));
   }
 
 }
