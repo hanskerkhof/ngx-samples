@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { User } from '../../_models/user';
 import { Observable } from 'rxjs';
-import { AddUser, RemoveUser } from '../../_actions/user.action';
 
 @Component({
   selector: 'app-index',
@@ -20,9 +19,9 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
   }
 
-  delete(name) {
-    console.log(name);
-    this.store.dispatch(new RemoveUser({name}));
-  }
+  // delete(name) {
+  //   console.log(name);
+  //   this.store.dispatch(new RemoveUser({name}));
+  // }
 
 }
