@@ -29,8 +29,10 @@ jobs:
           name: build angular app for staging (master or feature branch)
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "Build master";
               node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress
             else
+              echo "Build feature branch";
               node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress --base-href=/${CIRCLE_BRANCH}/
             fi
       - run: ls -l /tmp/staging/dist
@@ -46,6 +48,8 @@ jobs:
 #      - run: mkdir ~/.aws
 #      - run: echo -e "[stg]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
 #      - run: echo -e "[prd]\naws_access_key_id = $AWS_ACCESS_KEY_ID_PROD\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY_PROD\n" >> ~/.aws/credentials
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
       - attach_workspace:
           at: /tmp/staging
       - run: ls -l /tmp/staging/dist
@@ -53,11 +57,13 @@ jobs:
           name: Deploy to staging (master or feature branch)
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "Deploy branch master to staging";
-              node_modules/.bin/firebase deploy --public /tmp/staging/dist --token=$FIREBASE_TOKEN --non-interactive
+              echo "Deploy master branch";
+              mv /tmp/staging/dist dist
+              node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             else
-              echo "Deploy branch ${CIRCLE_BRANCH} to staging";
-              node_modules/.bin/firebase deploy --public /tmp/staging/dist --token=$FIREBASE_TOKEN --non-interactive
+              echo "Deploy branch ${CIRCLE_BRANCH}";
+              mv /tmp/staging/dist dist
+              node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             fi
 
   build-production:
