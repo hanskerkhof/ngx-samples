@@ -32,8 +32,8 @@ jobs:
               echo "Build master";
               node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress
             else
-              // echo "Build feature branch";
-              // node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress --base-href=/${CIRCLE_BRANCH}/
+              # echo "Build feature branch";
+              # node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress --base-href=/${CIRCLE_BRANCH}/
             fi
       - run: ls -l /tmp/staging/dist
       - persist_to_workspace:
@@ -61,8 +61,8 @@ jobs:
               mv /tmp/staging/dist dist
               node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             else
-              // echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
-              // mv /tmp/staging/dist dist
+              # echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
+              # mv /tmp/staging/dist dist
               // node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             fi
 
