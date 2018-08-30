@@ -63,7 +63,7 @@ jobs:
             else
               # echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
               # mv /tmp/staging/dist dist
-              // node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
+              # node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             fi
 
 workflows:
@@ -73,5 +73,9 @@ workflows:
     jobs:
       - build
       - deploy:
+          filters:
+            branches:
+              only:
+              - master
           requires:
             - build
