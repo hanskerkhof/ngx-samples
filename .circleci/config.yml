@@ -32,8 +32,8 @@ jobs:
               echo "Build master";
               node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress
             else
-              echo "Build feature branch";
-              node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress --base-href=/${CIRCLE_BRANCH}/
+              // echo "Build feature branch";
+              // node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress --base-href=/${CIRCLE_BRANCH}/
             fi
       - run: ls -l /tmp/staging/dist
       - persist_to_workspace:
@@ -41,7 +41,7 @@ jobs:
           paths:
             - dist/*
 
-  deploy-staging:
+  deploy:
     <<: *defaults
     steps:
       - checkout
@@ -61,62 +61,9 @@ jobs:
               mv /tmp/staging/dist dist
               node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             else
-              echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
-              mv /tmp/staging/dist dist
-              node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
-            fi
-
-  build-production:
-    <<: *defaults
-    steps:
-      - checkout
-#      - run: mkdir ~/.aws
-#      - run: echo -e "[stg]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
-#      - run: echo -e "[prd]\naws_access_key_id = $AWS_ACCESS_KEY_ID_PROD\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY_PROD\n" >> ~/.aws/credentials
-      - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: install-dependencies
-          command: yarn install
-      - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ./node_modules
-      - run:
-          name: lint
-          command: yarn lint
-#      - run:
-#          name: test
-#          command: yarn test --no-progress
-      - run:
-          name: build angular app for production (master)
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/production/dist --no-progress
-            fi
-      - run: ls -l /tmp/production/dist
-      - persist_to_workspace:
-          root: /tmp/production
-          paths:
-            - dist/*
-
-  deploy-production:
-    <<: *defaults
-    steps:
-      - checkout
-#      - run: mkdir ~/.aws
-#      - run: echo -e "[stg]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
-#      - run: echo -e "[prd]\naws_access_key_id = $AWS_ACCESS_KEY_ID_PROD\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY_PROD\n" >> ~/.aws/credentials
-      - attach_workspace:
-          at: /tmp/production
-      - run: ls -l /tmp/production/dist
-      - run:
-          name: Deploy master to production
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "Deploy branch master to production";
-              sh ./deploy-s3.sh prd /tmp/production/dist ngx-samples
+              // echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
+              // mv /tmp/staging/dist dist
+              // node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             fi
 
 workflows:
@@ -125,18 +72,6 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy-staging:
+      - deploy:
           requires:
             - build
-#      - build-production:
-#          filters:
-#            branches:
-#              only:
-#                - master
-#      - hold-for-approval:
-#          type: approval
-#          requires:
-#            - build-production
-#      - deploy-production:
-#          requires:
-#            - hold-for-approval
