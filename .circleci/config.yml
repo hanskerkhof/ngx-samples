@@ -28,13 +28,7 @@ jobs:
       - run:
           name: build angular app for staging (master or feature branch)
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "Build master";
-              node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress
-            else
-              # echo "Build feature branch";
-              # node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress --base-href=/${CIRCLE_BRANCH}/
-            fi
+            node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress
       - run: ls -l /tmp/staging/dist
       - persist_to_workspace:
           root: /tmp/staging
@@ -61,7 +55,7 @@ jobs:
               mv /tmp/staging/dist dist
               node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             else
-              # echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
+              echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
               # mv /tmp/staging/dist dist
               # node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
             fi
