@@ -1,6 +1,6 @@
 // user.action.ts
 
-import { User } from '../_models/user';
+import { User } from '../../_models/user';
 
 export class AddUser {
   static readonly type = '[User] Add';
@@ -11,5 +11,5 @@ export class AddUser {
 export class RemoveUser {
   static readonly type = '[User] Remove';
 
-  constructor(public payload: User) {}
+  constructor(public index: number) {}
 }

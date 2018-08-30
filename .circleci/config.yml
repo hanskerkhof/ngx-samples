@@ -26,7 +26,7 @@ jobs:
           name: lint
           command: yarn lint
       - run:
-          name: build angular app for staging (master or feature branch)
+          name: build angular app
           command: |
             node version.js && node_modules/\@angular/cli/bin/ng build --prod --output-path /tmp/staging/dist --no-progress
       - run: ls -l /tmp/staging/dist
@@ -50,15 +50,9 @@ jobs:
       - run:
           name: Deploy to staging (master or feature branch)
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "Deploy master branch to firebase app";
-              mv /tmp/staging/dist dist
-              node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
-            else
-              echo "Deploy branch ${CIRCLE_BRANCH} to firebase app";
-              # mv /tmp/staging/dist dist
-              # node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
-            fi
+            echo "Deploy master branch to firebase app";
+            mv /tmp/staging/dist dist
+            node_modules/.bin/firebase deploy --public dist --token=$FIREBASE_TOKEN --non-interactive
 
 workflows:
   version: 2

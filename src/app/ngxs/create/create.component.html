@@ -1,10 +1,6 @@
-<p>
-  create works!
-</p>
-
 <div class="card">
   <div class="card-body">
-    <form [formGroup]="angForm">
+    <form [formGroup]="angForm" class="compact">
       <div class="form-group">
         <label class="col-md-4">Name</label>
         <input type="text" class="form-control" formControlName="name" #name/>
@@ -26,7 +22,7 @@
       <div class="form-group">
         <button (click)="addUser(name.value, email.value)"
                 class="btn btn-primary"
-                [disabled]="angForm.pristine || angForm.invalid">Create User</button>
+                [disabled]="angForm.invalid">Create User</button>
       </div>
     </form>
   </div>

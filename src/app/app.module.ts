@@ -41,7 +41,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { CreateComponent } from './ngxs/create/create.component';
 import { IndexComponent } from './ngxs/index/index.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UserState } from './_state/user.state';
+import { UserState } from './ngxs/_states/user.state';
 import { NgxsComponent } from './ngxs/ngxs.component';
 
 @NgModule({

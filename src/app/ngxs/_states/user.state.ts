@@ -1,5 +1,5 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { User } from '../_models/user';
+import { User } from '../../_models/user';
 import { AddUser, RemoveUser } from '../_actions/user.action';
 
 export class UserStateModel {
@@ -28,10 +28,12 @@ export class UserState {
   }
 
   @Action(RemoveUser)
-  remove({getState, patchState}: StateContext<UserStateModel>, {payload}: RemoveUser) {
+  remove({getState, patchState}: StateContext<UserStateModel>, action: RemoveUser) {
     const state = getState();
+    state.users.splice(action.index, 1);
+
     patchState({
-      users: [...state.users, payload]
+      users: [...state.users]
     });
   }
 

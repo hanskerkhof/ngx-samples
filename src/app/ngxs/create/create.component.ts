@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AddUser } from '../../_actions/user.action';
+import { AddUser } from '../_actions/user.action';
+import * as faker from 'faker/locale/en_US';
 
 @Component({
   selector: 'app-create',
@@ -9,7 +10,6 @@ import { AddUser } from '../../_actions/user.action';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-
   angForm: FormGroup;
 
   constructor(private fb: FormBuilder, private store: Store) {
@@ -18,16 +18,26 @@ export class CreateComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-      name: ['', Validators.required ],
-      email: ['', Validators.required ]
+      name: ['', Validators.required],
+      email: ['', Validators.required]
     });
+    this.newPerson();
   }
 
   addUser(name, email) {
-    this.store.dispatch(new AddUser({ name, email}));
+    this.store.dispatch(new AddUser({name, email})).subscribe(() => {
+      this.newPerson();
+    });
   }
 
   ngOnInit() {
+  }
+
+  newPerson() {
+    this.angForm.patchValue({
+      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      email: faker.internet.email()
+    });
   }
 
 }

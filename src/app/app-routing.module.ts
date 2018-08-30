@@ -23,7 +23,11 @@ import { NgxsComponent } from './ngxs/ngxs.component';
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    data: {
+      name: 'Home'
+    }
+
   },
   {
     path: 'ng-content',
@@ -36,7 +40,7 @@ export const routes: Routes = [
     path: 'ngxs',
     component: NgxsComponent,
     data: {
-      name: 'ngxs'
+      name: 'NGXS State Management'
     }
   },
   {
@@ -69,13 +73,13 @@ export const routes: Routes = [
       }
     ]
   },
-  {
-    path: 'behaviour-subject',
-    component: BehaviourSubjectComponent,
-    data: {
-      name: 'BehaviourSubject'
-    }
-  },
+  // {
+  //   path: 'behaviour-subject',
+  //   component: BehaviourSubjectComponent,
+  //   data: {
+  //     name: 'BehaviourSubject'
+  //   }
+  // },
   {
     path: 'route',
     component: RouteComponent,
