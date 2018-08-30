@@ -40,7 +40,7 @@ export const routes: Routes = [
     path: 'ngxs',
     component: NgxsComponent,
     data: {
-      name: 'NGXS State Management'
+      name: 'NGXS State Mngmnt'
     }
   },
   {

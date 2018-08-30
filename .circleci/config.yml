@@ -48,7 +48,7 @@ jobs:
           at: /tmp/staging
       - run: ls -l /tmp/staging/dist
       - run:
-          name: Deploy to staging (master or feature branch)
+          name: Deploy master
           command: |
             echo "Deploy master branch to firebase app";
             mv /tmp/staging/dist dist
