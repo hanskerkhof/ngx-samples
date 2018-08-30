@@ -1,0 +1,22 @@
+<div *ngIf="users">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th class="left">index</th>
+      <th class="left">Name</th>
+      <th class="left">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users | async; let i = index">
+      <td class="action left" (click)="delete(i)">
+        <clr-icon shape="trash"></clr-icon>
+      </td>
+      <td class="left">{{ i }}</td>
+      <td class="left">{{ user.name }}</td>
+      <td class="left">{{ user.email }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

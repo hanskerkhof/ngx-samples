@@ -20,16 +20,16 @@
     <nav class="sidenav">
       <section class="sidenav-content">
 
-        <a [routerLink]="['/']"
-           routerLinkActive="active"
-           [routerLinkActiveOptions]="{exact: true}"
-           class="nav-link active">Home
-        </a>
+        <!--<a [routerLink]="['/']"-->
+           <!--routerLinkActive="active"-->
+           <!--[routerLinkActiveOptions]="{exact: true}"-->
+           <!--class="nav-link active">Home-->
+        <!--</a>-->
 
         <ng-container *ngFor="let r of myRoutes">
 
           <a *ngIf="!r.hasOwnProperty('children')"
-             [routerLink]="['/', r.path]"
+             [routerLink]="['/', r.path ? r.path : '/']"
              routerLinkActive="active"
              [routerLinkActiveOptions]="{exact: true}"
              class="nav-link active">
