@@ -2,7 +2,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th></th>
+      <th (click)="removeAll()"><clr-icon shape="trash" class="is-solid"></clr-icon></th>
       <th class="left">index</th>
       <th class="left">Name</th>
       <th class="left">Email</th>
@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let user of users | async; let i = index">
-      <td class="action left" (click)="delete(i)">
+      <td (click)="remove(i)">
         <clr-icon shape="trash"></clr-icon>
       </td>
       <td class="left">{{ i }}</td>

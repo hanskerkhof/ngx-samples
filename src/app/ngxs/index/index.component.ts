@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { User } from '../../_models/user';
 import { Observable } from 'rxjs';
-import { RemoveUser } from '../_actions/user.action';
+import { RemoveUser, RemoveUserAll } from '../_actions/user.action';
 
 @Component({
   selector: 'app-index',
@@ -17,8 +17,13 @@ export class IndexComponent implements OnInit {
     this.users = this.store.select(state => state.users.users);
   }
 
-  delete(index) {
+  remove(index) {
     this.store.dispatch(new RemoveUser(index)).subscribe(() => {
+    });
+  }
+
+  removeAll(index) {
+    this.store.dispatch(new RemoveUserAll()).subscribe(() => {
     });
   }
 

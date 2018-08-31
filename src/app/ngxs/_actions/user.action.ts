@@ -13,3 +13,7 @@ export class RemoveUser {
 
   constructor(public index: number) {}
 }
+
+export class RemoveUserAll {
+  static readonly type = '[User] RemoveAll';
+}

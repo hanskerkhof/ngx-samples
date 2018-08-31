@@ -3,6 +3,7 @@ import { routes } from './app-routing.module';
 import { DataService } from './_services/data.service';
 import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 import { bounce, zoomIn, zoomOut, pulse, fadeOutRight, flipOutX, zoomOutRight } from 'ng-animate';
+import { Store } from '@ngxs/store';
 
 // export const pulse = animation(
 //   animate(
@@ -74,13 +75,16 @@ import { bounce, zoomIn, zoomOut, pulse, fadeOutRight, flipOutX, zoomOutRight } 
 })
 export class AppComponent implements OnInit, OnDestroy {
   private eventSubscription;
-  public myRoutes;
   public badges = {data: {list: {amount: null}}};
   public bounce: any;
-
+  public myRoutes;
   public trigger;
+  public userCount;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private store: Store) {
+    this.store.subscribe((usersState) => {
+      this.userCount = usersState.users.users.length ? usersState.users.users.length : 0;
+    });
   }
 
   onAnimationStart(event) {

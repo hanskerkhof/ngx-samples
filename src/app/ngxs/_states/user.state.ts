@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { User } from '../../_models/user';
-import { AddUser, RemoveUser } from '../_actions/user.action';
+import { AddUser, RemoveUser, RemoveUserAll } from '../_actions/user.action';
 
 export class UserStateModel {
   users: User[];
@@ -35,6 +35,13 @@ export class UserState {
     patchState({
       users: [...state.users]
     });
+  }
+
+  @Action(RemoveUserAll)
+  removeAll({getState, setState}: any) {
+    // const state = getState();
+    const state = getState();
+    setState({users: []});
   }
 
 }
