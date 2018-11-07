@@ -9,6 +9,21 @@
         <span class="title">ngx-samples</span>
       </a>
     </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-icon" clrDropdownTrigger>
+          <clr-icon shape="language"></clr-icon>
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a *ngFor="let lang of ['en', 'nl', 'de', 'fi', 'fr']"
+             clrDropdownItem
+             (click)="setLanguage(lang)"
+             [ngClass]="{'active': compareCurrentLang(lang)}"
+             disabled="compareCurrentLang(lang)">{{lang}}</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
   </header>
   <!--<nav class="subnav">-->
   <!--...-->
@@ -19,13 +34,6 @@
     </div>
     <nav class="sidenav">
       <section class="sidenav-content">
-
-        <!--<a [routerLink]="['/']"-->
-           <!--routerLinkActive="active"-->
-           <!--[routerLinkActiveOptions]="{exact: true}"-->
-           <!--class="nav-link active">Home-->
-        <!--</a>-->
-
         <ng-container *ngFor="let r of myRoutes">
 
           <a *ngIf="!r.hasOwnProperty('children')"
@@ -33,7 +41,12 @@
              routerLinkActive="active"
              [routerLinkActiveOptions]="{exact: true}"
              class="nav-link active">
-            {{r.data?.name ? r.data.name : r.path}}
+            <span *ngIf="r.data.name === 'Home'">
+              {{'MENU.HOME' | translate}}
+            </span>
+            <span *ngIf="r.data.name !== 'Home'">
+              {{r.data?.name ? r.data.name : r.path}}
+            </span>
             <!--<span [@pulseInOut] *ngIf="(r.path === 'state' && this.userCount)" class="badge badge-info">{{this.userCount}}</span>-->
             <!--{{r.path}} {{r.data?.name}}-->
           </a>
