@@ -34,7 +34,7 @@
              [routerLinkActiveOptions]="{exact: true}"
              class="nav-link active">
             {{r.data?.name ? r.data.name : r.path}}
-            <span [@pulseInOut] *ngIf="(r.path === 'ngxs' && this.userCount)" class="badge">{{this.userCount}}</span>
+            <!--<span [@pulseInOut] *ngIf="(r.path === 'state' && this.userCount)" class="badge badge-info">{{this.userCount}}</span>-->
             <!--{{r.path}} {{r.data?.name}}-->
           </a>
 
@@ -42,16 +42,18 @@
             <input [id]="r.path" type="checkbox">
             <label [for]="r.path">
               {{r.path}}
+              <span [@pulseInOut] *ngIf="(r.path === 'ngxs' && this.userCount)" class="badge badge-info">{{this.userCount}}</span>
               <span (@pulseInOut.done)="onAnimationDone($event)"
                     (@pulseInOut.start)="onAnimationStart($event)"
                     [@pulseInOut] *ngIf="(r.path === 'route' && this.badges.data.list.amount)" class="badge">{{this.badges.data.list.amount}}</span>
             </label>
             <ul *ngFor="let c of r.children" class="nav-list">
-              <li style="white-space: nowrap; display: inline;">
+              <li *ngIf="c.data?.name" style="white-space: nowrap; display: inline;">
                 <a [routerLink]="[r.path, c.path]"
                    routerLinkActive="active"
                    class="nav-link"> {{c.data?.name ? c.data.name : c.path}}
-                </a></li>
+                </a>
+              </li>
             </ul>
           </section>
         </ng-container>

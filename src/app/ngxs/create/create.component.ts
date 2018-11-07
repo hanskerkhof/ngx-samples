@@ -14,6 +14,10 @@ export class CreateComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private store: Store) {
     this.createForm();
+    // for (let i = 0; i < 90; i++) {
+    //   console.log(i);
+    //   this.addUser(`${faker.name.firstName()} ${faker.name.lastName()}`, faker.internet.email());
+    // }
   }
 
   createForm() {

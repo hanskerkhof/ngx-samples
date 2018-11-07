@@ -366,6 +366,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@ngxs/form-plugin@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@ngxs/form-plugin/-/form-plugin-3.2.0.tgz#4ccb2c38d55a7903f00033fd6529e869b640d7a9"
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngxs/logger-plugin@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@ngxs/logger-plugin/-/logger-plugin-3.2.0.tgz#c2b40b79c7b41ca0ef930b25bd19e07043cf7774"
