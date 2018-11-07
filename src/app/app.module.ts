@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { PipesModule } from './_pipes/pipes.module';
 import { ClarityModule } from '@clr/angular';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AgmCoreModule } from '@agm/core';
 import { MomentModule } from 'ngx-moment';
@@ -45,9 +45,15 @@ import { UserState } from './ngxs/_states/user.state';
 import { NgxsComponent } from './ngxs/ngxs.component';
 import { PizzaState } from './ngxs/_states/pizza.state';
 import { AppLoadService } from './_services/app-load.service';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function initApp(appLoadService: AppLoadService) {
   return () => appLoadService.initializeApp('from app.module');  // + any other services...
+}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }
 
 @NgModule({
@@ -74,6 +80,18 @@ export function initApp(appLoadService: AppLoadService) {
     NgxsComponent
   ],
   imports: [
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      // missingTranslationHandler: {
+      //   provide: MissingTranslationHandler,
+      //   useClass: MissingTranslationService
+      // },
+      useDefaultLang: true
+    }),
     NgxsModule.forRoot([UserState, PizzaState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
@@ -82,6 +100,7 @@ export function initApp(appLoadService: AppLoadService) {
     AppRoutingModule,
     FormsModule,
     MomentModule,
+    HttpClientModule,
     PipesModule,
     ClarityModule,
     BrowserAnimationsModule,
@@ -93,7 +112,11 @@ export function initApp(appLoadService: AppLoadService) {
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 100, dataEncapsulation: false}
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+        delay: 100,
+        dataEncapsulation: false,
+        passThruUnknownUrl: true
+      }
     )
     // environment.production ?
     //   HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 100}) : []

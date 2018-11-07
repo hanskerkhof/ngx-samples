@@ -4,6 +4,7 @@ import { DataService } from './_services/data.service';
 import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 import { bounce, zoomIn, zoomOut, pulse, fadeOutRight, flipOutX, zoomOutRight } from 'ng-animate';
 import { Store } from '@ngxs/store';
+import { TranslateService } from '@ngx-translate/core';
 
 // export const pulse = animation(
 //   animate(
@@ -81,11 +82,27 @@ export class AppComponent implements OnInit, OnDestroy {
   public trigger;
   public userCount;
 
-  constructor(private dataService: DataService, private store: Store) {
+  constructor(private dataService: DataService,
+              private store: Store,
+              private translate: TranslateService) {
     this.store.subscribe((usersState) => {
       this.userCount = usersState.users.users.length ? usersState.users.users.length : 0;
       this.userCount = this.userCount > 99 ? `99+` : this.userCount;
     });
+    // translate.setDefaultLang('nl');
+    translate.use('en');
+  }
+
+  setLanguage(lang) {
+    this.translate.use(lang);
+  }
+
+  public get getCurrentLang(){
+    return this.translate.currentLang;
+  }
+
+  public compareCurrentLang(lang){
+    return lang === this.translate.currentLang;
   }
 
   onAnimationStart(event) {
