@@ -5,7 +5,6 @@ import { ThrottleComponent } from './custom-decorators/throttle/throttle.compone
 import { DebounceComponent } from './custom-decorators/debounce/debounce.component';
 import { LifecycleHooksComponent } from './custom-decorators/lifecycle-hooks/lifecycle-hooks.component';
 
-import { BehaviourSubjectComponent } from './behaviour-subject/behaviour-subject.component';
 import { NgContentComponent } from './ng-content/ng-content.component';
 import { RouteComponent } from './route/route.component';
 import { RouteParametersComponent } from './route/route-parameters/route-parameters.component';
@@ -19,7 +18,6 @@ import { RouteOutletsDetailComponent } from './route/route-outlets/route-outlets
 import { RouteOutletsHeaderComponent } from './route/route-outlets/route-outlets-header/route-outlets-header.component';
 import { HomeComponent } from './home/home.component';
 import { NgxsComponent } from './ngxs/ngxs.component';
-import { NgxsFormsComponent } from './ngxs/ngxs-forms/ngxs-forms.component';
 
 export const routes: Routes = [
   {
@@ -53,13 +51,6 @@ export const routes: Routes = [
         component: NgxsComponent,
         data: {
           name: 'state'
-        }
-      },
-      {
-        path: 'forms',
-        component: NgxsFormsComponent,
-        data: {
-          name: 'forms'
         }
       }
     ]

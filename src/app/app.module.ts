@@ -43,7 +43,6 @@ import { IndexComponent } from './ngxs/index/index.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserState } from './ngxs/_states/user.state';
 import { NgxsComponent } from './ngxs/ngxs.component';
-import { NgxsFormsComponent } from './ngxs/ngxs-forms/ngxs-forms.component';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { PizzaState } from './ngxs/_states/pizza.state';
 import { AppLoadService } from './_services/app-load.service';
@@ -73,8 +72,7 @@ export function initApp(appLoadService: AppLoadService) {
     HomeComponent,
     CreateComponent,
     IndexComponent,
-    NgxsComponent,
-    NgxsFormsComponent
+    NgxsComponent
   ],
   imports: [
     NgxsModule.forRoot([UserState, PizzaState]),
