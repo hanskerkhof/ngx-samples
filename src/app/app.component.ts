@@ -97,11 +97,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.translate.use(lang);
   }
 
-  public get getCurrentLang(){
+  public get getCurrentLang() {
     return this.translate.currentLang;
   }
 
-  public compareCurrentLang(lang){
+  public compareCurrentLang(lang) {
     return lang === this.translate.currentLang;
   }
 
