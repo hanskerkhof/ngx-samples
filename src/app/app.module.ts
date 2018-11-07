@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AgmCoreModule } from '@agm/core';
-import { MomentModule } from 'angular2-moment';
+import { MomentModule } from 'ngx-moment';
 
 import { AppComponent } from './app.component';
 import { ViewChildComponent } from './view-child/view-child.component';
@@ -43,7 +43,6 @@ import { IndexComponent } from './ngxs/index/index.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserState } from './ngxs/_states/user.state';
 import { NgxsComponent } from './ngxs/ngxs.component';
-import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { PizzaState } from './ngxs/_states/pizza.state';
 import { AppLoadService } from './_services/app-load.service';
 
@@ -76,7 +75,6 @@ export function initApp(appLoadService: AppLoadService) {
   ],
   imports: [
     NgxsModule.forRoot([UserState, PizzaState]),
-    NgxsFormPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     ReactiveFormsModule,
