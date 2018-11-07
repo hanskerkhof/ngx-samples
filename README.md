@@ -1,35 +1,4 @@
-Decorator
-
-- https://netbasal.com/inspiration-for-custom-decorators-in-angular-95aeb87f072c
-
-WOW!
-- https://github.com/angular/angular/issues/21049#issuecomment-402654380
-- https://stackoverflow.com/questions/46018599/how-to-globally-set-the-preservewhitespaces-option-in-angular-to-false/46619232#46619232
-
-##### For JIT Compiling
-
-Add { preserveWhitespaces: false } as an option to the bootstrapModule() method in main.ts:
-
-    platformBrowserDynamic().bootstrapModule(AppModule, { preserveWhitespaces: true });
-
-##### For AOT Compiling
-Add "angularCompilerOptions": { "preserveWhitespaces": true } to tsconfig.app.json:
-
-    {
-      "extends": "../tsconfig.json",
-      "compilerOptions": {
-        "outDir": "../out-tsc/app",
-        "module": "es2015",
-        "types": []
-      },
-      "exclude": [
-        "src/test.ts",
-        "**/*.spec.ts"
-      ],
-      "angularCompilerOptions": {
-        "preserveWhitespaces": false
-      }
-    }
+Demo: https://ngx-samples.firebaseapp.com/
 
 # NgContentSamples
 
