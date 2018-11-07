@@ -19,6 +19,7 @@ import { RouteOutletsDetailComponent } from './route/route-outlets/route-outlets
 import { RouteOutletsHeaderComponent } from './route/route-outlets/route-outlets-header/route-outlets-header.component';
 import { HomeComponent } from './home/home.component';
 import { NgxsComponent } from './ngxs/ngxs.component';
+import { NgxsFormsComponent } from './ngxs/ngxs-forms/ngxs-forms.component';
 
 export const routes: Routes = [
   {
@@ -38,10 +39,30 @@ export const routes: Routes = [
   },
   {
     path: 'ngxs',
-    component: NgxsComponent,
     data: {
       name: 'NGXS State Mngmnt'
-    }
+    },
+    children: [
+      {
+        path: '',
+        redirectTo: 'state',
+        pathMatch: 'full'
+      },
+      {
+        path: 'state',
+        component: NgxsComponent,
+        data: {
+          name: 'state'
+        }
+      },
+      {
+        path: 'forms',
+        component: NgxsFormsComponent,
+        data: {
+          name: 'forms'
+        }
+      }
+    ]
   },
   {
     path: 'custom-decorators',

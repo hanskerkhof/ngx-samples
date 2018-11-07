@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PipesModule } from './_pipes/pipes.module';
 import { ClarityModule } from '@clr/angular';
@@ -43,6 +43,14 @@ import { IndexComponent } from './ngxs/index/index.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserState } from './ngxs/_states/user.state';
 import { NgxsComponent } from './ngxs/ngxs.component';
+import { NgxsFormsComponent } from './ngxs/ngxs-forms/ngxs-forms.component';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { PizzaState } from './ngxs/_states/pizza.state';
+import { AppLoadService } from './_services/app-load.service';
+
+export function initApp(appLoadService: AppLoadService) {
+  return () => appLoadService.initializeApp('from app.module');  // + any other services...
+}
 
 @NgModule({
   declarations: [
@@ -65,10 +73,12 @@ import { NgxsComponent } from './ngxs/ngxs.component';
     HomeComponent,
     CreateComponent,
     IndexComponent,
-    NgxsComponent
+    NgxsComponent,
+    NgxsFormsComponent
   ],
   imports: [
-    NgxsModule.forRoot([UserState]),
+    NgxsModule.forRoot([UserState, PizzaState]),
+    NgxsFormPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     ReactiveFormsModule,
@@ -95,7 +105,19 @@ import { NgxsComponent } from './ngxs/ngxs.component';
   providers: [
     DataService,
     DataResolverService,
-    DataItemResolverService
+    DataItemResolverService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (appLoadService: AppLoadService) => () => appLoadService.initializeApp('from service'),
+      deps: [AppLoadService],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      deps: [AppLoadService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

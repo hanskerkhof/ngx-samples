@@ -1,0 +1,17 @@
+<p>
+  ngxs-forms works!
+</p>
+<form [formGroup]="pizzaForm"
+      novalidate
+      ngxsForm="todo.pizzaForm"
+      ngxsFormClearOnDestroy="true"
+      (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="toppings"/>
+  <input type="text" formControlName="size"/>
+  <button type="submit">Order</button>
+</form>
+<button (click)="setDisabled()">setDisabled</button>
+<button (click)="setEnabled()">setEnabled</button>
+<pre>{{pizzaForm.controls['toppings'].errors | json}}</pre>
+Form Status: {{ pizzaForm.status }}<br>
+<pre>{{todo$ | async | json}}</pre>

@@ -84,6 +84,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService, private store: Store) {
     this.store.subscribe((usersState) => {
       this.userCount = usersState.users.users.length ? usersState.users.users.length : 0;
+      this.userCount = this.userCount > 99 ? `99+` : this.userCount;
     });
   }
 

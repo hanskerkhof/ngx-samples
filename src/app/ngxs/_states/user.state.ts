@@ -23,7 +23,8 @@ export class UserState {
   add({getState, patchState}: StateContext<UserStateModel>, {payload}: AddUser) {
     const state = getState();
     patchState({
-      users: [...state.users, payload]
+      // users: [...state.users, payload]
+      users: [payload, ...state.users]
     });
   }
 
@@ -31,7 +32,6 @@ export class UserState {
   remove({getState, patchState}: StateContext<UserStateModel>, action: RemoveUser) {
     const state = getState();
     state.users.splice(action.index, 1);
-
     patchState({
       users: [...state.users]
     });
@@ -40,7 +40,6 @@ export class UserState {
   @Action(RemoveUserAll)
   removeAll({getState, setState}: any) {
     // const state = getState();
-    const state = getState();
     setState({users: []});
   }
 
