@@ -17,7 +17,7 @@ export class DataService {
 
   readDataList() {
     const url = 'api/addresses';
-    return Observable.create(observer => {
+    return new Observable(observer => {
       this.http.get<any>(`${url}`).subscribe((data) => {
         this.dispatcher.emit({type: 'data:list', payload: {amount: data.length}});
         observer.next(data);
@@ -28,7 +28,7 @@ export class DataService {
 
   readDataItem(id) {
     const url = 'api/addresses';
-    return Observable.create(observer => {
+    return new Observable(observer => {
       this.http.get<any>(`${url}/${id}`).subscribe((data) => {
         this.dispatcher.emit({type: 'data:item', payload: {}});
         observer.next(data);
