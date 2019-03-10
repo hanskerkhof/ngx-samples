@@ -1,6 +1,5 @@
 import { AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { HookLog } from '../hooklog.decorator';
-import { NgLog } from '../nglog.decorator';
 
 @Component({
   selector: 'app-lifecycle-hooks',
@@ -16,13 +15,12 @@ export class LifecycleHooksComponent implements OnInit, OnDestroy, AfterContentI
   public interval = 0;
   public intervalRef: any;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
     this.intervalRef = setInterval(() => {
       this.interval++;
-      // console.log('interval', this.interval);
+      console.log('interval', this.interval);
     }, 3000);
   }
 

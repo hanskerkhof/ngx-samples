@@ -25,6 +25,7 @@ export function HookLog(configuration?) {
           if (original) {
             original.apply(this, args);
           }
+          return 'test from HookLog decorator';
         };
       });
     }
