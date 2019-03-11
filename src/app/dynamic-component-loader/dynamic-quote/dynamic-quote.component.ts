@@ -35,13 +35,13 @@ export class DynamicQuoteComponent implements OnInit {
 
   public getQuote() {
     const quote = Math.floor(Math.random() * this.quotes.length);
-    console.log('getQuote', quote);
+    // console.log('getQuote', quote);
     this.quote = {
       number: quote,
       text: this.quotes[quote][0],
       author: this.quotes[quote][1]
     };
-    console.log('quote', this.quote);
+    // console.log('quote', this.quote);
   }
 
 }

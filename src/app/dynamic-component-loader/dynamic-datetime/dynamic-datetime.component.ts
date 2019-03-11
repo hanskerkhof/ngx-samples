@@ -19,11 +19,9 @@ export class DynamicDatetimeComponent implements OnInit, OnDestroy {
     this.subscription = this.secondsCounter.subscribe(n => {
       this.now = new Date();
     });
-    console.log('this.subscription', this.subscription);
   }
 
   ngOnDestroy(): void {
-    console.log('this.subscription', this.subscription);
     this.subscription.unsubscribe();
   }
 }

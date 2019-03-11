@@ -27,7 +27,7 @@ export class DynamicComponentLoaderComponent implements OnInit {
   }
 
   loadComponent(scope) {
-    console.log('DynHostDirective', DynHostDirective);
+    // console.log('DynHostDirective', DynHostDirective);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(scope.component);
     // if (this.dynHost.viewContainerRef) {
     const viewContainerRef = this.dynHost.viewContainerRef;

@@ -72,11 +72,8 @@ export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterVi
     let cnt = 1;
     const len = this.templates.length;
 
-    // console.log('el', this.el.nativeElement.innerHTML);
     this.interval = setInterval(() => {
-      console.log('interval');
       this.template = this.templates[cnt];
-      console.log(cnt);
       this.compileTemplate();
       cnt = cnt < len - 1 ? cnt = cnt + 1 : cnt = 0;
     }, 3000);
@@ -90,7 +87,6 @@ export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterVi
     };
 
     const factory = this.createComponentFactorySync(this.compiler, metadata, null);
-    console.log('factory', factory);
     if (this.componentRef) {
       this.componentRef.destroy();
       this.componentRef = null;
@@ -114,8 +110,6 @@ export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterVi
     }
 
     const module: ModuleWithComponentFactories<any> = compiler.compileModuleAndAllComponentsSync(RuntimeComponentModule);
-    // console.log('module', module);
-    // console.log('decoratedCmp', decoratedCmp);
 
     return module.componentFactories.find(f => f.componentType === decoratedCmp);
   }

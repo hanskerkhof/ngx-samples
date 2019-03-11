@@ -15,12 +15,12 @@ export class DynamicComponentComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
-    this.initialHtmlContent = this.content.nativeElement.innerHTML.replace(/\s{2,}/g, ' ').trim();
-    console.log('ngOnInit', this.initialHtmlContent);
+    // this.initialHtmlContent = this.content.nativeElement.innerHTML.replace(/\s{2,}/g, ' ').trim();
+    // console.log('ngOnInit', this.initialHtmlContent);
   }
 
   ngAfterContentInit() {
     this.initialHtmlContent = this.content.nativeElement.innerHTML.replace(/\s{2,}/g, ' ').trim();
-    console.log('ngAfterContentInit', this.initialHtmlContent);
+    // console.log('ngAfterContentInit', this.initialHtmlContent);
   }
 }
