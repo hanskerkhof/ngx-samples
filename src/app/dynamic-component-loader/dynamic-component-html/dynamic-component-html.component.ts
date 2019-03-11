@@ -18,27 +18,24 @@ import { DynamicQuoteComponent } from '../dynamic-quote/dynamic-quote.component'
 
 @Component({
   selector: 'app-dynamic-component-html',
-  template: `
-    <ng-container #container></ng-container>`,
-  // templateUrl: './dynamic-component-html.component.html',
+  templateUrl: './dynamic-component-html.component.html',
   styleUrls: ['./dynamic-component-html.component.scss']
 })
 export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterViewInit, AfterContentInit {
-  @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
+  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
+  // @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
   // @ViewChild('container') private container: ElementRef;
   templates = [
     `<app-dynamic-component label="testlabel">Hello!</app-dynamic-component>
-      <div>\nHello, {{name}} {{10 | currency}}\n</div><app-dynamic-datetime></app-dynamic-datetime>
-      <app-dynamic-quote></app-dynamic-quote>`,
+     <div>Hello, {{name}} {{10 | currency}}</div>
+     <app-dynamic-datetime></app-dynamic-datetime>
+     <app-dynamic-quote></app-dynamic-quote>`,
     `<app-dynamic-quote></app-dynamic-quote>`,
     `<app-dynamic-datetime></app-dynamic-datetime>`,
     `<app-dynamic-component label="testlabel">Hello!</app-dynamic-component><div>\nHello, {{name}} {{10 | currency}}\n</div>`,
   ];
   template = this.templates[0];
   interval: any;
-
-  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
-  // @ViewChild('vc') private content: ElementRef;
 
   public rawHTML: string;
   private componentRef: ComponentRef<{}>;
