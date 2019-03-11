@@ -47,6 +47,7 @@ import { PizzaState } from './ngxs/_states/pizza.state';
 import { AppLoadService } from './_services/app-load.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { WebversionComponent } from './ng-content/webversion/webversion.component';
 
 export function initApp(appLoadService: AppLoadService) {
   return () => appLoadService.initializeApp('from app.module');  // + any other services...
@@ -77,7 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     CreateComponent,
     IndexComponent,
-    NgxsComponent
+    NgxsComponent,
+    WebversionComponent
   ],
   imports: [
     TranslateModule.forRoot({
