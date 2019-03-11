@@ -10,12 +10,15 @@ export class DynamicComponentComponent implements OnInit, AfterContentInit {
   @Input() public label: string;
   @ViewChild('content') private content: ElementRef;
   public initialHtmlContent: string;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.initialHtmlContent = this.content.nativeElement.innerHTML.replace(/\s{2,}/g, ' ').trim();
     console.log('ngOnInit', this.initialHtmlContent);
   }
+
   ngAfterContentInit() {
     this.initialHtmlContent = this.content.nativeElement.innerHTML.replace(/\s{2,}/g, ' ').trim();
     console.log('ngAfterContentInit', this.initialHtmlContent);

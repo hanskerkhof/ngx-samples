@@ -1,16 +1,18 @@
 :host {
-  //.quotemark {
-  //  position: relative;
-  //  top: -12px;
-  //  // padding-right: 10px;
-  //}
-
   blockquote {
+    //quotes: "“" "”" "‘" "’";
     border-left: 10px solid #490A3D;
     margin: 30px 10px;
     padding: 10px 30px;
+    //&:before {
+    //  content: open-quote;
+    //}
+    //&:after {
+    //  content: close-quote;
+    //}
   }
   blockquote:before {
+    //content: open-quote;
     color: #ccc;
     line-height: 0.1em;
     margin-right: 0.25em;
@@ -22,7 +24,6 @@
   blockquote footer {
     font-size:18px;
     text-align:right;
-//    color:transparent;
   }
 
   .quotebox {
@@ -39,14 +40,14 @@
   //  display:inline-block;
   //  padding:6px 12px;
   //}
-  //#quotesource{margin-top:20px}
+  .quotesource{margin-top:20px}
 
   @media only screen and (max-width: 768px){
-    #quotetext {font-size:25px; }
+    .quotetext {font-size:25px; }
     .container {	margin-right:20px;}
   }
   @media only screen and (max-width: 320px){
-    #quotetext {font-size:18px; }
+    .quotetext {font-size:18px; }
 
   }
 }

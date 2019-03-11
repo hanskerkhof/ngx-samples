@@ -23,15 +23,19 @@ import { DynamicQuoteComponent } from '../dynamic-quote/dynamic-quote.component'
   // templateUrl: './dynamic-component-html.component.html',
   styleUrls: ['./dynamic-component-html.component.scss']
 })
-export class DynamicComponentHtmlComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterViewInit, AfterContentInit {
   @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
   // @ViewChild('container') private container: ElementRef;
   templates = [
-    '<app-dynamic-component label="test">Hola!</app-dynamic-component><div>\nHello, {{name}} {{908 | currency}}\n</div>',
-    '<app-dynamic-datetime></app-dynamic-datetime>',
-    '<app-dynamic-quote></app-dynamic-quote>'
+    `<app-dynamic-component label="testlabel">Hello!</app-dynamic-component>
+      <div>\nHello, {{name}} {{10 | currency}}\n</div><app-dynamic-datetime></app-dynamic-datetime>
+      <app-dynamic-quote></app-dynamic-quote>`,
+    `<app-dynamic-quote></app-dynamic-quote>`,
+    `<app-dynamic-datetime></app-dynamic-datetime>`,
+    `<app-dynamic-component label="testlabel">Hello!</app-dynamic-component><div>\nHello, {{name}} {{10 | currency}}\n</div>`,
   ];
   template = this.templates[0];
+  interval: any;
 
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
   // @ViewChild('vc') private content: ElementRef;
@@ -72,7 +76,7 @@ export class DynamicComponentHtmlComponent implements OnInit, AfterViewInit, Aft
     const len = this.templates.length;
 
     // console.log('el', this.el.nativeElement.innerHTML);
-    setInterval(() => {
+    this.interval = setInterval(() => {
       console.log('interval');
       this.template = this.templates[cnt];
       console.log(cnt);
@@ -113,9 +117,8 @@ export class DynamicComponentHtmlComponent implements OnInit, AfterViewInit, Aft
     }
 
     const module: ModuleWithComponentFactories<any> = compiler.compileModuleAndAllComponentsSync(RuntimeComponentModule);
-    console.log('module', module);
-    console.log('module', module);
-    console.log('decoratedCmp', decoratedCmp);
+    // console.log('module', module);
+    // console.log('decoratedCmp', decoratedCmp);
 
     return module.componentFactories.find(f => f.componentType === decoratedCmp);
   }
@@ -158,10 +161,11 @@ export class DynamicComponentHtmlComponent implements OnInit, AfterViewInit, Aft
   // }
   //
   // // Cleanup properly. You can add more cleanup-related stuff here.
-  // ngOnDestroy() {
-  //   // if (this.cmpRef) {
-  //   //   this.cmpRef.destroy();
-  //   // }
-  // }
+  ngOnDestroy() {
+    if (this.componentRef) {
+      this.componentRef.destroy();
+    }
+    clearInterval(this.interval);
+  }
 
 }
