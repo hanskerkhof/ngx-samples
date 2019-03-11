@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'webversion',
+  selector: 'app-web-version',
   templateUrl: './webversion.component.html',
   styleUrls: ['./webversion.component.scss'],
   preserveWhitespaces: true,

@@ -100,7 +100,7 @@ export class DynamicComponentHtmlComponent implements OnInit, AfterViewInit, Aft
   private createComponentFactorySync(compiler: Compiler, metadata: Component, componentClass: any): ComponentFactory<any> {
 
     const cmpClass = componentClass || class RuntimeComponent {
-      name: string = 'Denys';
+      name = 'Denys';
     };
     const decoratedCmp = Component(metadata)(cmpClass);
 
