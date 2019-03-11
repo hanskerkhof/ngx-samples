@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DynamicQuoteComponent implements OnInit {
   public quote: any;
-  public color: string;
 
   private quotes = [
     ['You only live once, but if you do it right, once is enough.', 'Mae West'],

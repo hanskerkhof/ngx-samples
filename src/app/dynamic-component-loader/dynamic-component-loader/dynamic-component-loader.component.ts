@@ -1,5 +1,4 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
-import { DynamicComponentComponent } from '../dynamic-component/dynamic-component.component';
 import { DynHostDirective } from '../dyn-host.directive';
 
 @Component({

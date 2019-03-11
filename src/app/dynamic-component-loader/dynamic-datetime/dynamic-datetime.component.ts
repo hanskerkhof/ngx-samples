@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Observable, Subscription, timer } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-dynamic-datetime',
