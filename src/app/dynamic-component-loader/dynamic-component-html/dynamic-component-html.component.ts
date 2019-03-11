@@ -11,7 +11,6 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DynamicComponentComponent } from '../dynamic-component/dynamic-component.component';
 import { DynamicDatetimeComponent } from '../dynamic-datetime/dynamic-datetime.component';
@@ -24,7 +23,7 @@ import { DynamicQuoteComponent } from '../dynamic-quote/dynamic-quote.component'
   // templateUrl: './dynamic-component-html.component.html',
   styleUrls: ['./dynamic-component-html.component.scss']
 })
-export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterViewInit, AfterContentInit {
+export class DynamicComponentHtmlComponent implements OnInit, AfterViewInit, AfterContentInit {
   @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
   // @ViewChild('container') private container: ElementRef;
   templates = [
@@ -32,10 +31,10 @@ export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterVi
     '<app-dynamic-datetime></app-dynamic-datetime>',
     '<app-dynamic-quote></app-dynamic-quote>'
   ];
-  template = this.templates[1];
+  template = this.templates[0];
 
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
-  @ViewChild('vc') private content: ElementRef;
+  // @ViewChild('vc') private content: ElementRef;
 
   public rawHTML: string;
   private componentRef: ComponentRef<{}>;
@@ -64,7 +63,6 @@ export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterVi
     // console.log('el', this.el.nativeElement.innerHTML);
     // console.log('ngAfterContentInit', this.container.element);
 //    console.log(this.container.nativeElement.replace(/\s{2,}/g, ' ').trim());
-
   }
 
   ngOnInit() {
@@ -73,7 +71,7 @@ export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterVi
     let cnt = 1;
     const len = this.templates.length;
 
-    console.log('el', this.el.nativeElement.innerHTML);
+    // console.log('el', this.el.nativeElement.innerHTML);
     setInterval(() => {
       console.log('interval');
       this.template = this.templates[cnt];
@@ -81,11 +79,6 @@ export class DynamicComponentHtmlComponent implements OnInit, OnDestroy, AfterVi
       this.compileTemplate();
       cnt = cnt < len - 1 ? cnt = cnt + 1 : cnt = 0;
     }, 3000);
-  }
-
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private compiler: Compiler) {
   }
 
   compileTemplate() {

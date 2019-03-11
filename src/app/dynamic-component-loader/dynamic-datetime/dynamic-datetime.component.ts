@@ -8,8 +8,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./dynamic-datetime.component.scss']
 })
 export class DynamicDatetimeComponent implements OnInit, OnDestroy {
-  public today: number = Date.now();
-  public now: number = Date.now();
+  public now: Date;
   private subscription: Subscription;
 //  secondsCounter = interval(1000);
   secondsCounter = timer(0, 1000);
