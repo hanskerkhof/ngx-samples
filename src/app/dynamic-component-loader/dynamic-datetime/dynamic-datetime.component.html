@@ -1,0 +1,33 @@
+<div class="c-clock">
+  <div class="c-inner">
+    <div class="c-year">
+      {{now | date:'y'}}
+    </div>
+
+    <div class="c-month">
+      {{now | date:'LLL'}}
+    </div>
+
+    <div class="c-day">
+      {{now | date:'d'}}
+    </div>
+
+    <div class="c-weekday">
+      {{now | date:'EEE'}}
+    </div>
+
+    <div class="c-period">
+      {{now | date:'a'}}
+    </div>
+
+    <div class="c-time">
+      {{now | date:'hh:mm:ss'}}
+    </div>
+
+    <div class="c-timezone">
+      {{now | date:'zzzz'}}
+    </div>
+
+  </div>
+</div>
+<pre>now: {{now}}</pre>

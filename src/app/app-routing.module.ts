@@ -36,6 +36,13 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'dynamic-component-loader',
+    data: {
+      name: 'dynamic-component-loader'
+    },
+    loadChildren: './dynamic-component-loader/dynamic-component-loader.module#DynamicComponentLoaderModule'
+  },
+  {
     path: 'ngxs',
     data: {
       name: 'NGXS State Mngmnt'

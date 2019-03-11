@@ -1,0 +1,24 @@
+<div>
+  <!--dynamic-quote works!-->
+<!--<pre>{{quote | json}}</pre>-->
+
+<!--<div class="container">-->
+  <!--<div class="row">-->
+    <!--<div class="col-xs-12"></div>-->
+    <div class="col-xs-12 quotebox">
+      <div class="row">
+        <div class="col-xs-12">
+          <blockquote>
+            <i class="fa fa-quote-left quotemark"></i>
+            <h2 class="quotetext">{{quote.text}}</h2>
+            <footer class="quotesource">{{quote.author}}</footer>
+          </blockquote>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <div class="quotebutton"><button class="btn btn-primary" (click)="getQuote()">New Quote</button></div>
+        </div>
+      </div>
+    </div>
+</div>

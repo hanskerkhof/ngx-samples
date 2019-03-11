@@ -1,0 +1,37 @@
+:host {
+  .c-clock {
+    //   padding: 24px;
+    box-sizing: border-box;
+
+    max-width: 250px;
+    border: darkgray solid 5px;
+    font-weight: 700;
+    text-align: center;
+    line-height: auto;
+    border-radius: 5px;
+    color: white;
+    font-family: monospace;
+
+    .c-inner {
+      padding: 14px;
+      background-color: #222222;
+    }
+
+    .c-year {
+       font-size: 24px;
+    }
+
+    .c-day {
+      font-size: 32px;
+    }
+
+    .c-time {
+      font-size: 32px;
+    }
+
+    .c-timezone {
+      display: none;
+    }
+  }
+
+}
